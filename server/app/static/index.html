@@ -1,5 +1,24 @@
 <html>
     <body>
-        Hello, World!
+        <p1>Hello, World!</p1>
+        <input type="button" value="Add smth" id="add" />
+        <div id="data-list"></div>
+
+        <script>
+            const ws = new WebSocket(`wss://${location.hostname}:${location.port}/ws`);
+            ws.onopen = () => {
+                console.log('Socket ready');
+                ws.send('::getAll');
+
+                document.getElementById('add').onclick = () => {
+                    ws.send(`Smth new ${Date.now()}`);
+                }
+            };
+            ws.onmessage = (message) => {
+                console.log(message.data);
+                document.getElementById('data-list').innerHTML += `<p>${message.data}</p>`;
+            };
+        </script>
+
     </body>
 </html>
