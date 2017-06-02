@@ -1,4 +1,4 @@
-const { Server } = require('uws');
+const { Server } = require('ws');
 
 const TestModel = require('./models/test-model');
 

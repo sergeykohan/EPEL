@@ -14,6 +14,6 @@ const TestModel = new Schema({
 
 TestModel.statics.getAll = function () {
     return this.find({}).exec();
-}
+};
 
 module.exports = mongoose.model('testModel', TestModel);
